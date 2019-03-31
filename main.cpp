@@ -35,9 +35,11 @@ const Vector centreCamera = Vector(0, 0, 55);
 static std::vector<unsigned char> image(W * H * 3, 0);
 const double fov = 60 * M_PI / 180;
 const double tanfov = tan(fov / 2);
-int nombreRayonIndirect = 2;
+int nombreRayonIndirect = 200;
 int I = 4500000;
 
+
+/** Lumière pour une source ponctuelle */
 const Vector L = Vector(-10, 20, 40);
 
 
@@ -214,7 +216,7 @@ Vector generateRay(const int i,const int j) {
 };
 
 
-
+/** Tourner le vecteur d'un angle angleRotation autour de axis*/
 Vector getRotation(int axis, Vector vecteur, double angleRotation){
     switch (axis) {
         case 0:
@@ -229,7 +231,7 @@ Vector getRotation(int axis, Vector vecteur, double angleRotation){
             break;
     }}
 
-
+/** Pour générer un certain nombre d'images lors d'une rotation */
 void generateRotation(){
     int counter = 0;
     double pas = M_PI / 25;
